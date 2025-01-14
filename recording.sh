@@ -1,12 +1,14 @@
-#!/bin/bash
+#!/bin/sh
 
 . /usr/local/pisound/scripts/common/common.sh
 
-if [[ ! $(/usr/bin/systemctl is-active recording.service) = "active" ]]; then 
+if [ ! -e "/tmp/.recordingState" ]; then 
 	periodic_led_blink 3 1
-	/usr/bin/systemctl start recording
+	touch /tmp/.recordingState
+	oscsend localhost 7777 /jack_capture/tm/start
 else
 	periodic_led_blink 3 0.5
-	/usr/bin/systemctl stop recording
+	oscsend localhost 7777 /jack_capture/tm/stop
+	rm -rf /tmp/.recordingState
 	periodic_led_blink 0 0 
 fi

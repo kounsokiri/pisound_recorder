@@ -1,12 +1,19 @@
 [Unit]
-Description=Record audio from Pisound
-Requires=srv-share.mount
+Description=Jack Capture Service for MODEP on PatchboxOS
+After=jack.service
+BindsTo=jack.service
+Wants=pisound-btn.service modep-browsepy.service
 
 [Service]
-Type=simple
-ExecStartPre=/bin/bash -c "/bin/systemctl set-environment wav=$(mktemp)"
-ExecStartPre=/bin/bash -c "/bin/systemctl set-environment mp3=/srv/share/mixname_$(/usr/bin/date +%%F_%%H-%%M-%%S).mp3"
-ExecStart=-/usr/bin/arecord -f S32_LE -c 2 -r 48000 -D hw:CARD=pisound ${wav}
-ExecStopPost=echo converting to ${mp3}
-ExecStopPost=/usr/bin/ffmpeg -y -loglevel warning -i ${wav} -ac 2 -b:a 320k -ar 48k ${mp3}
-TimeoutStopSec=infinity
+LimitRTPRIO=95
+LimitMEMLOCK=infinity
+Environment=JACK_PROMISCUOUS_SERVER=jack
+ExecStartPre=/usr/bin/jack_wait -w
+ExecStart=/usr/bin/env sh -c "/bin/jack_capture -O 7777 -c 2 --daemon -f flac -fp \"/var/modep/user-files/Audio Recordings/capture_\" -p system:capture*  -tm -tmpb 180"
+Restart=always
+RestartSec=2
+User=patch
+Group=patch
+
+[Install]
+WantedBy=multi-user.target
