@@ -9,7 +9,7 @@ Tap The Button once to record the past 3 minutes, tap again to stop
 	- Handles starting and stopping of recording
 	- Blinks the led during recording
 - recording.service: SystemD unit for recording
-	- Uses MODEP's [`Audio Recordings`][10] directory
+	- Uses '~/Music/' directory
 	- jack_capture timemachine/osc daemon logic
 	- captures 180 seconds (3 minutes) of buffer before you pushed the button (configurable, if you change `--tmpb 180` in the service file)
 
@@ -17,16 +17,15 @@ Tap The Button once to record the past 3 minutes, tap again to stop
 - Install (see below)
 - Press button to start recording, including the past 3 minutes, led starts blinking
 - Press button to stop recording, blinking intensivies when done
-- View files in [http://patchbox.local:8081/browse/Audio%20Recordings][http://patchbox.local:8081/browse/Audio%20Recordings]
-
+- View files in '~/Music/'
+  
 # Debugging
 - `watch systemctl status recording.service`
 - `journalctl -f -u recording.service`
 
 # Requirements
 - Patchbox OS (Tested with Debian 12 (bookworm))
-- Patchbox MODEP Module (optional, if you change [`capture_dir`][10] in the service file)
-- Raspberry Pi (Tested with 4 B - 2GB)
+- Raspberry Pi (Tested with 5 - 8GB)
 - Pisound, optionally with case
 
 # Install
