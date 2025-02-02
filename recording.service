@@ -1,15 +1,15 @@
 [Unit]
-Description=Jack Capture Service for MODEP on PatchboxOS
+Description=One button record audio with pre- recording buffer Pisound
 After=jack.service
 BindsTo=jack.service
-Wants=pisound-btn.service modep-browsepy.service
+Wants=pisound-btn.service
 
 [Service]
 LimitRTPRIO=95
 LimitMEMLOCK=infinity
 Environment=JACK_PROMISCUOUS_SERVER=jack
 ExecStartPre=/usr/bin/jack_wait -w
-ExecStart=/usr/bin/env sh -c "/bin/jack_capture -O 7777 -c 2 --daemon -f flac -fp \"/var/modep/user-files/Audio Recordings/capture_\" -p system:capture*  -tm -tmpb 180"
+ExecStart=/usr/bin/env sh -c "/bin/jack_capture -O 7777 -c 2 --daemon -f wav -fp \"/home/patch/Music \" -p system:capture*  -tm -tmpb 180"
 Restart=always
 RestartSec=2
 User=patch
