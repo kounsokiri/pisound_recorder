@@ -9,7 +9,7 @@ LimitRTPRIO=95
 LimitMEMLOCK=infinity
 Environment=JACK_PROMISCUOUS_SERVER=jack
 ExecStartPre=/usr/bin/jack_wait -w
-ExecStart=/usr/bin/env sh -c "/bin/jack_capture -O 7777 -c 2 --daemon -f wav -fp \"/home/patch/Music \" -p system:capture*  -tm -tmpb 180"
+ExecStart=/usr/bin/env sh -c "/bin/jack_capture -O 7777 -c 2 --daemon -f wav -fp \"/home/patch/Music/recording_ \" -p system:capture*  -tm -tmpb 180"
 Restart=always
 RestartSec=2
 User=patch
