@@ -9,7 +9,7 @@ Tap The Button once to record the past 3 minutes, tap again to stop
 	- Handles starting and stopping of recording
 	- Blinks the led during recording
 - recording.service: SystemD unit for recording
-	- Uses '~/Music/' directory
+	- Uses /home/patch/Music/ directory
 	- jack_capture timemachine/osc daemon logic
 	- captures 180 seconds (3 minutes) of buffer before you pushed the button (configurable, if you change `--tmpb 180` in the service file)
 
@@ -17,7 +17,7 @@ Tap The Button once to record the past 3 minutes, tap again to stop
 - Install (see below)
 - Press button to start recording, including the past 3 minutes, led starts blinking
 - Press button to stop recording, blinking intensivies when done
-- View files in '~/Music/'
+- View files in  /home/patch/Music/
   
 # Debugging
 - `watch systemctl status recording.service`
