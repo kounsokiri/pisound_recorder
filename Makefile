@@ -1,4 +1,4 @@
-directory=/var/modep/user-files/Audio\ Recordings/
+directory=/home/patch/Music/
 script=/usr/local/pisound/scripts/pisound-btn/recording.sh
 service=/etc/systemd/system/recording.service
 install:
