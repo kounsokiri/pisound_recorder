@@ -49,7 +49,7 @@ or edit /etc/pisound.conf manually to contain:
 # Thanks
 
 Original made by [strobeflash](https://github.com/strobeflash/pisound_recorder) & [Giedrius][11], for [PatchboxOS](https://blokas.io/patchbox-os/)/[Pisound](https://blokas.io/pisound/)
-
+Forked from [JKirchartz]([https://github.com/JKirchartz/pisound_recorder)) who added the pre recording buffer.
 
 [10]: https://wiki.mod.audio/wiki/File_handling#:~:text=The%20Audio%20Recordings%20folder%20will%20be%20the%20place%20where%20any%20recording%20done%20inside%20your%20MOD%20device%20is%20stored.
 [11]: https://community.blokas.io/t/record-audio-with-the-button/2761/13
